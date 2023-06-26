@@ -4,12 +4,28 @@ import { Filters } from './Filters/Filters';
 
 import PropTypes from 'prop-types';
 import { PhonebookForm } from './PhonebookForm/PhonebookForm';
+import { load, save } from 'utils/storage';
 
 export class App extends Component {
   state = {
     contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    const parsedList = load('list');
+
+    if (parsedList) {
+      this.setState({ contacts: parsedList });
+    }
+  }
+  componentDidUpdate(_, prevState) {
+    const { contacts } = this.state;
+
+    if (prevState.contacts !== contacts) {
+      save('list', contacts);
+    }
+  }
 
   handleAddItem = ({ name, number }) => {
     const { contacts } = this.state;
