@@ -1,57 +1,33 @@
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
 import { Contacts } from './Contacts/Contacts';
 import { Filters } from './Filters/Filters';
 
 import PropTypes from 'prop-types';
 import { PhonebookForm } from './PhonebookForm/PhonebookForm';
-import { load, save } from 'utils/storage';
+import { load } from 'utils/storage';
 
-export class App extends Component {
-  state = {
-    contacts: [],
-    filter: '',
-  };
+export const App = () => {
+  const [contacts, setContacts] = useState(() => load('list'));
+  const [filter, setFilter] = useState('');
 
-  componentDidMount() {
-    const parsedList = load('list');
+  useEffect(() => {
+    localStorage.setItem('list', JSON.stringify(contacts));
+  }, [contacts]);
 
-    if (parsedList) {
-      this.setState({ contacts: parsedList });
-    }
-  }
-  componentDidUpdate(_, prevState) {
-    const { contacts } = this.state;
-
-    if (prevState.contacts !== contacts) {
-      save('list', contacts);
-    }
-  }
-
-  handleAddItem = ({ name, number }) => {
-    const { contacts } = this.state;
+  const handleAddItem = ({ name, number }) => {
     const isExsist = contacts.find(
       word => word.name.toLowerCase() === name.toLowerCase()
     );
     if (isExsist) {
-      alert(`${name} is alredy in contacts`);
+      alert(`${name} is already in contacts`);
       return;
     }
-    this.setState(prevState => ({
-      contacts: [
-        ...prevState.contacts,
-        {
-          id: crypto.randomUUID(),
-          name: name,
-          number: number,
-        },
-      ],
-    }));
+    setContacts(prev => [...prev, { id: crypto.randomUUID(), name, number }]);
   };
-  handleChangeFilter = ({ target }) => {
-    this.setState({ filter: target.value });
+  const handleChangeFilter = ({ target }) => {
+    setFilter(target.value);
   };
-  getFilterName = () => {
-    const { contacts, filter } = this.state;
+  const getFilterName = () => {
     return contacts.filter(
       contact =>
         contact.name.toLowerCase().includes(filter.toLowerCase()) ||
@@ -59,33 +35,28 @@ export class App extends Component {
     );
   };
 
-  deleteContact = id => {
-    this.setState(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== id),
-    }));
+  const deleteContact = id => {
+    setContacts(prev => prev.filter(contact => contact.id !== id));
   };
 
-  render() {
-    const { filter } = this.state;
-    const filterData = this.getFilterName();
+  const filterData = getFilterName();
 
-    return (
-      <>
-        <PhonebookForm addContact={this.handleAddItem} />
-        <Filters
-          contactFilter={this.handleChangeFilter}
-          filterValue={filter}
-          title={'Find contacts by name or number:'}
-        />
-        <Contacts
-          contacts={filterData}
-          title={'Contact:'}
-          deleteUser={this.deleteContact}
-        />
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <PhonebookForm addContact={handleAddItem} />
+      <Filters
+        contactFilter={handleChangeFilter}
+        filterValue={filter}
+        title={'Find contacts by name or number:'}
+      />
+      <Contacts
+        contacts={filterData}
+        title={'Contact:'}
+        deleteUser={deleteContact}
+      />
+    </>
+  );
+};
 
 App.propType = {
   state: PropTypes.objectOf(
