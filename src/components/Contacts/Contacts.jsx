@@ -1,18 +1,30 @@
 import React from 'react';
 import { StyledList, StyledItem, Wraper, StyledBtn } from './Contacts.styled';
 import PropTypes from 'prop-types';
+import { deleteContact } from 'components/Redux/contactSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectContacts, selectFilters } from 'components/Redux/selector';
 
-export const Contacts = ({ contacts, title, deleteUser }) => {
+export const Contacts = ({ title }) => {
+  const contacts = useSelector(selectContacts);
+  const filters = useSelector(selectFilters);
+
+  const getFilterName = contacts.filter(contact => {
+    return contact.name.toLowerCase().includes(filters?.toLowerCase() || '');
+  });
+
+  const dispatch = useDispatch();
+
   return (
     <Wraper>
       <h2>{title}</h2>
       <StyledList>
-        {contacts.map((contact, idx) => {
+        {getFilterName.map((contact, idx) => {
           return (
             <StyledItem key={contact.id}>
               {idx + 1 + ') '}
               {contact.name}: {contact.number}
-              <StyledBtn onClick={() => deleteUser(contact.id)}>
+              <StyledBtn onClick={() => dispatch(deleteContact(contact.id))}>
                 Delete
               </StyledBtn>
             </StyledItem>
@@ -31,6 +43,5 @@ Contacts.propTypes = {
       number: PropTypes.string.isRequired,
     })
   ),
-  title: PropTypes.string.isRequired,
-  deleteUser: PropTypes.func.isRequired,
+  title: PropTypes.string,
 };
