@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledList, StyledItem, Wraper, StyledBtn } from './Contacts.styled';
+import { StyledList, StyledItem, StyledBtn, Wrapper } from './Contacts.styled';
 import PropTypes from 'prop-types';
 import { deleteContact } from 'components/Redux/contactSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,7 +16,7 @@ export const Contacts = ({ title }) => {
   const dispatch = useDispatch();
 
   return (
-    <Wraper>
+    <Wrapper>
       <h2>{title}</h2>
       <StyledList>
         {getFilterName.map((contact, idx) => {
@@ -31,7 +31,7 @@ export const Contacts = ({ title }) => {
           );
         })}
       </StyledList>
-    </Wraper>
+    </Wrapper>
   );
 };
 
