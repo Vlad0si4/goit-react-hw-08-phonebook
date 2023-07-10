@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
 `;
 
 export const StyledList = styled.ol`
@@ -19,6 +19,11 @@ export const StyledItem = styled.li`
   border: 1px solid black;
   border-radius: 10px;
   padding: 10px 40px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #00000033;
+  }
 `;
 
 export const StyledBtn = styled.button`

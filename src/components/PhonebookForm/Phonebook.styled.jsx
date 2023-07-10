@@ -1,6 +1,16 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+export const H1 = styled.h1`
+  display: flex;
+  justify-content: center;
+`;
 
 export const StyledForm = styled.form`
   // display: flex;
@@ -9,7 +19,6 @@ export const StyledForm = styled.form`
 export const StyledLabel = styled.label`
   width: 400px;
 
-  border: 1px solid black;
   padding: 20px 20px;
 
   display: flex;
@@ -37,4 +46,8 @@ export const StyleButton = styled.button`
   border-radius: 10px;
   margin-right: auto;
   margin-left: auto;
+
+  &:hover {
+    background-color: #00000033;
+  }
 `;

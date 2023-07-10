@@ -1,18 +1,22 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { contactFilter } from 'components/Redux/contactSlice';
+
+import { StyledInput, Wrapper } from './FilterStyled';
+import { contactFilter } from 'components/Redux/filterSlice';
 
 export const Filters = ({ title }) => {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <>
       <h3>{title}</h3>
-      <input
-        name="filter"
-        onChange={e => dispatch(contactFilter(e.target.value))}
-      />
-    </div>
+      <Wrapper>
+        <StyledInput
+          name="filter"
+          onChange={e => dispatch(contactFilter(e.target.value))}
+        />
+      </Wrapper>
+    </>
   );
 };
 
