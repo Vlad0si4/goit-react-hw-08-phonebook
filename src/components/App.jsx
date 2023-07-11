@@ -30,7 +30,3 @@ export const App = () => {
     </>
   );
 };
-// {contacts?.length === 0 ? (
-//           <h3 className={css.title}>
-//             There are no contacts in your phone book.
-//           </h3>
