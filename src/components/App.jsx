@@ -3,9 +3,9 @@ import { Contacts } from './Contacts/Contacts';
 import { StyledP, StyledTitle } from './Contacts/Contacts.styled';
 import { Filters } from './Filters/Filters';
 import { PhonebookForm } from './PhonebookForm/PhonebookForm';
-import { selectContacts } from './Redux/selector';
+import { selectContacts } from '../Redux/selector';
 import { useEffect } from 'react';
-import { fetchContactsThunk } from './Redux/operations';
+import { fetchContactsThunk } from '../Redux/operations';
 
 export const App = () => {
   const contacts = useSelector(selectContacts);

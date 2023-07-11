@@ -6,8 +6,8 @@ import {
   selectError,
   selectFilterContact,
   selectLoading,
-} from 'components/Redux/selector';
-import { deleteContactThunk } from 'components/Redux/operations';
+} from 'Redux/selector';
+import { deleteContactThunk } from 'Redux/operations';
 
 export const Contacts = ({ title }) => {
   const dispatch = useDispatch();
