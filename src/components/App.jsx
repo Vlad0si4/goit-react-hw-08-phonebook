@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Contacts } from './Contacts/Contacts';
-import { Contact, StyledP, StyledTitle } from './Contacts/Contacts.styled';
+import { StyledP, StyledTitle } from './Contacts/Contacts.styled';
 import { Filters } from './Filters/Filters';
 import { PhonebookForm } from './PhonebookForm/PhonebookForm';
 import { selectContacts } from './Redux/selector';
