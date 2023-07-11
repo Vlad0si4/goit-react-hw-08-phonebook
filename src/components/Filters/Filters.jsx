@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
 import { StyledInput, Wrapper } from './FilterStyled';
@@ -18,8 +17,4 @@ export const Filters = ({ title }) => {
       </Wrapper>
     </>
   );
-};
-
-Filters.propTypes = {
-  title: PropTypes.string,
 };

@@ -33,3 +33,13 @@ export const StyledBtn = styled.button`
   margin-left: auto;
   border: 1px solid black;
 `;
+
+export const StyledTitle = styled.h2`
+  display: flex;
+  justify-content: center;
+`;
+
+export const StyledP = styled.p`
+  display: flex;
+  justify-content: center;
+`;

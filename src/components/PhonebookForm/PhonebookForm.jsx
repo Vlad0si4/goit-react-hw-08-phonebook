@@ -13,11 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { selectContacts } from 'components/Redux/selector';
-import { addContact } from 'components/Redux/contactSlice';
-import {
-  addContactContactThunk,
-  addContactThunk,
-} from 'components/Redux/operations';
+import { addContactThunk } from 'components/Redux/operations';
 
 const INIT_STATE = {
   name: '',
@@ -26,7 +22,6 @@ const INIT_STATE = {
 
 export const PhonebookForm = () => {
   const [contact, setContact] = useState(INIT_STATE);
-  console.log(contact);
   const { name, number } = contact;
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
@@ -43,14 +38,14 @@ export const PhonebookForm = () => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    // const isExsist = contacts.find(
-    //   item => item.name.toLowerCase() === name.toLowerCase()
-    // );
-    // if (isExsist) {
-    //   alert(`${name} is already in contacts`);
-    //   setContact(INIT_STATE);
-    //   return;
-    // }
+    const isExsist = contacts.find(
+      item => item.name.toLowerCase() === name.toLowerCase()
+    );
+    if (isExsist) {
+      alert(`${name} is already in contacts`);
+      setContact(INIT_STATE);
+      return;
+    }
 
     dispatch(addContactThunk(contact));
     setContact(INIT_STATE);
