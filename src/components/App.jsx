@@ -15,7 +15,6 @@ export const App = () => {
     dispatch(fetchContactsThunk());
   }, [dispatch]);
 
-  console.log(contacts);
   return (
     <>
       <PhonebookForm />

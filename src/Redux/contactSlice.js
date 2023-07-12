@@ -32,7 +32,6 @@ export const contactSlice = createSlice({
       })
       //Delete
       .addCase(deleteContactThunk.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.contacts = state.contacts.filter(
           contact => contact.id !== payload
         );
