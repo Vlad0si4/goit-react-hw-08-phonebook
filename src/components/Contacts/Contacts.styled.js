@@ -16,14 +16,14 @@ export const StyledList = styled.ol`
 export const StyledItem = styled.li`
   display: flex;
   align-items: center;
-  border: 1px solid black;
+  border: 2px solid #ffeb3b;
   border-radius: 10px;
   padding: 10px 40px;
   cursor: pointer;
 
-  &:hover {
-    background-color: #00000033;
-  }
+  /* &:hover {
+    background-color: #d1ff04ae;
+  } */
 `;
 
 export const StyledBtn = styled.button`
@@ -31,7 +31,10 @@ export const StyledBtn = styled.button`
   cursor: pointer;
   border-radius: 10px;
   margin-left: auto;
-  border: 1px solid black;
+  border: 2px solid #ffeb3b;
+  &:hover {
+    background-color: #d1ff04ae;
+  }
 `;
 
 export const StyledTitle = styled.h2`

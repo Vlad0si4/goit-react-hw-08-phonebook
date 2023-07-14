@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchAddUser, fetchContacts, fetchDelete } from 'service/mockApi';
+import { fetchAddUser, fetchContacts, fetchDelete } from 'service/userInstance';
+// import { fetchAddUser, fetchContacts, fetchDelete } from 'service/mockApi';
 
 export const fetchContactsThunk = createAsyncThunk(
   'contact/fetchContact',

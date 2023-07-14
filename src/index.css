@@ -7,8 +7,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #040a08f3;
+  color: aliceblue;
 }
 
+h1 {
+  font-size: 30px;
+  font-style: italic;
+}
+h2 {
+  font-size: 30px;
+  font-style: italic;
+}
+p {
+  font-style: italic;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

@@ -33,21 +33,24 @@ export const StyledLabel = styled.label`
 export const StyledInput = styled.input`
   padding: 5px 10px;
   font-size: calc((1vh + 1vw) * 1.2);
-  background-color: inherit;
+  background-color: transparent;
   border: none;
   outline: none;
-  border-bottom: 1px solid;
+  border-bottom: 2px solid #ffeb3b;
+  color: aliceblue;
 `;
 
 export const StyleButton = styled.button`
-  width: 180px;
+  width: 140px;
+  height: 35px;
   font-size: 20px;
   cursor: pointer;
   border-radius: 10px;
   margin-right: auto;
   margin-left: auto;
+  border: 2px solid #ffeb3b;
 
   &:hover {
-    background-color: #00000033;
+    background-color: #d1ff04ae;
   }
 `;

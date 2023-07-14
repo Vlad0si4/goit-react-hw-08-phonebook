@@ -1,31 +1,27 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { Contacts } from './Contacts/Contacts';
-import { StyledP, StyledTitle } from './Contacts/Contacts.styled';
-import { Filters } from './Filters/Filters';
-import { PhonebookForm } from './PhonebookForm/PhonebookForm';
-import { selectContacts } from '../Redux/selector';
-import { useEffect } from 'react';
-import { fetchContactsThunk } from '../Redux/operations';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { Contacts } from './Contacts/Contacts';
+
+import { ContactsPage } from 'pages/contact/Contacts';
+import { Login } from 'pages/login/Login';
+import { Register } from 'pages/register/Register';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { Layout } from './NavBar/Layout';
+import { Home } from 'pages/home/Home';
 
 export const App = () => {
-  const contacts = useSelector(selectContacts);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchContactsThunk());
-  }, [dispatch]);
-
   return (
     <>
-      <PhonebookForm />
-      {contacts.length === 0 ? null : (
-        <Filters title={<StyledP>Find contacts by name:</StyledP>} />
-      )}
-      {contacts.length === 0 ? (
-        <StyledTitle>There are no contacts in your phone book.</StyledTitle>
-      ) : (
-        <Contacts title={<StyledP>Contact:</StyledP>} />
-      )}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="contact" element={<ContactsPage />} />
+            <Route path="*" element={<Navigate to={'/'} />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 };

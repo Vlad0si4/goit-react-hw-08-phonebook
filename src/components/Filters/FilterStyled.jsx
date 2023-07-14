@@ -10,7 +10,8 @@ export const StyledInput = styled.input`
   width: 400px;
   height: 40px;
   background-color: inherit;
+  color: aliceblue;
   border: none;
   outline: none;
-  border-bottom: 1px solid;
+  border-bottom: 2px solid #ffeb3b;
 `;

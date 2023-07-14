@@ -12,8 +12,8 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { selectContacts } from 'Redux/selector';
-import { addContactThunk } from 'Redux/operations';
+import { selectContacts } from 'Redux/contacts/selector';
+import { addContactThunk } from 'Redux/contacts/operations';
 
 const INIT_STATE = {
   name: '',
