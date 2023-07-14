@@ -6,13 +6,6 @@ export const Wrapper = styled.div`
   align-items: center;
   gap: 40px;
   margin-left: auto;
-
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-
-  gap: 20px;
-  margin: 0px; */
 `;
 
 export const UserForm = styled.div`

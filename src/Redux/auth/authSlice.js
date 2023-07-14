@@ -1,4 +1,9 @@
-import { loginThunk, logoutThunk, registerThunk } from './operation';
+import {
+  loginThunk,
+  logoutThunk,
+  refreshThunk,
+  registerThunk,
+} from './operation';
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 const pending = state => {
@@ -18,8 +23,8 @@ const initialState = {
   },
   token: '',
   error: null,
-  loading: false,
   isLoggedIn: false,
+  isRefreshing: false,
 };
 
 const authSlice = createSlice({
@@ -34,7 +39,17 @@ const authSlice = createSlice({
         };
         state.token = '';
         state.isLoggedIn = false;
-        state.loading = false;
+      })
+      .addCase(refreshThunk.fulfilled, (state, { payload }) => {
+        state.user = payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(refreshThunk.pending, state => {
+        state.isRefreshing = true;
+      })
+      .addCase(refreshThunk.rejected, state => {
+        state.isRefreshing = false;
       })
       .addMatcher(isAnyOf(loginThunk.pending, registerThunk.pending), pending)
       .addMatcher(
@@ -47,7 +62,6 @@ const authSlice = createSlice({
           state.user = payload.user;
           state.token = payload.token;
           state.isLoggedIn = true;
-          state.loading = false;
         }
       );
   },

@@ -8,14 +8,13 @@ import {
 } from './Register.styled';
 import { useDispatch } from 'react-redux';
 import { registerThunk } from 'Redux/auth/operation';
-import { NavLink } from 'react-router-dom';
 
 const userState = {
   name: '',
   email: '',
   password: '',
 };
-//bill235689@gmail.com
+
 export const Register = () => {
   const dispatch = useDispatch();
   const [autUser, setAutUser] = useState(userState);

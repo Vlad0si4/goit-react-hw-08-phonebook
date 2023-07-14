@@ -7,7 +7,7 @@ import { selectUser } from 'Redux/auth/selector';
 export const UserMenu = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
-  //bill235689@gmail.com
+
   return (
     <Wrapper>
       <TitleStyled>Hello {user.name}!</TitleStyled>

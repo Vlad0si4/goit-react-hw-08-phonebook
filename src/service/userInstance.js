@@ -42,3 +42,8 @@ export const fetchAddUser = async user => {
   const { data } = await instance.post(`/contacts`, user);
   return data;
 };
+
+export const fetchRefreshUser = async () => {
+  const { data } = await instance.get(`/users/current`);
+  return data;
+};

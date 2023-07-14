@@ -8,7 +8,7 @@ export const StyledHeader = styled.header`
   border: none;
   border-bottom: 2px solid #ffeb3b;
 
-  height: 40px;
+  height: 60px;
   background-color: #040a08f3;
 `;
 export const StyledBtn = styled.button`

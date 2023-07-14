@@ -8,12 +8,12 @@ import {
   StyledInput,
   Wrapper,
 } from '../register/Register.styled';
-import { NavLink } from 'react-router-dom';
+
 const userState = {
   email: '',
   password: '',
 };
-//bill235689@gmail.com
+
 export const Login = () => {
   const dispatch = useDispatch();
   const [login, setLogin] = useState(userState);
